@@ -22,6 +22,7 @@ To run this project:
 $ git clone github.com/monocliffe/ultimate-blog-project
 $ cd ultimate-blog-project
 $ yarn install --check-files
+$ rails db:migrate
 $ rails server
 ```
 
