@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  forename: Joe
+  surname: Bloggs
+  email: example@email.ie
+  password_digest: <%= BCrypt::Password.create('secret') %>
+
+two:
+  forename: Barry
+  surname: Mann
+  email: barry@email.ie
+  password_digest: <%= BCrypt::Password.create('secret') %>
