@@ -12,8 +12,14 @@
   <body>
     <div id="content">
       <div id="login">
-        <em>Not logged in.</em>
-        <%= link_to 'Login', login_path %>
+        <% if @current_user %>
+          Logged in as:
+          <%= @current_user.forename %>
+          <%= @current_user.surname %>
+        <% else %>
+          <em>Not logged in.</em>
+          <%= link_to 'Login', login_path %>
+        <% end %>
       </div>
     </div>
 
