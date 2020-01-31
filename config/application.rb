@@ -12,7 +12,8 @@ module UltimateBlogProject
     config.load_defaults 6.0
     config.session_store :cookie_store, expire_after: 2.hours
 
-    # Settings in config/environments/* take precedence over those specified here.
+    # Settings in config/environments/*
+    # take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
