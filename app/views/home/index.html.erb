@@ -1,0 +1,7 @@
+<h1>Hello World!</h1>
+
+<% if @current_user %>
+  Logged in as <%= @current_user.forename %> <%= @current_user.surname %>
+<% else %>
+  Not logged in.
+<% end %>

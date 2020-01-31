@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'home', to: 'home#index', as: 'home'
 end
