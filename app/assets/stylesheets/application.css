@@ -13,3 +13,4 @@
  *= require_tree .
  *= require_self
  */
+#login {  float: right;  color: #999;}
