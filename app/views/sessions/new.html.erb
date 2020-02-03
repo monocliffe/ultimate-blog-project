@@ -1,5 +1,14 @@
 <%= form_tag session_path do %>
   <h3>Please Login</h3>
+
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <font color="red">
+        <%= value %>
+      </font>
+    </div>
+  <% end %>
+
   <p>
     <label>Email:</label>
     <%= email_field_tag 'email' %>

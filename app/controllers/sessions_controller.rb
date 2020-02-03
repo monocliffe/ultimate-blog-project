@@ -7,9 +7,14 @@ class SessionsController < ApplicationController
       session[:user_id] = @current_user.id
       redirect_to home_path
     else
+      flash.now[:error] = 'Invalid email/password combination'
       render action: 'new'
     end
   end
 
   def destroy; end
+
+  def show
+    create
+  end
 end
