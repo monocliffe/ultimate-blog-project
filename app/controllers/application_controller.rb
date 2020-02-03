@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user
-  before_action :ensure_login, except: [:index, :new]
+  before_action :current_user
+  #before_action :ensure_login, except: [:index, :new]
 
   protected
 
@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !@current_user.nil?
   end
-
   helper_method :logged_in?
 
   def ensure_login
