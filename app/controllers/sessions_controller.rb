@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = @current_user = nil
-    redirect_to home_url, notice: 'Logout Successful!'
+    flash[:success] = 'Logout Successful!'
+    redirect_to home_url
   end
 end

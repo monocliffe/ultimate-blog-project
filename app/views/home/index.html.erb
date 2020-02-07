@@ -1,2 +1,9 @@
 <h1>Hello World!</h1>
-<p id="notice"><%= notice %></p>
+
+<div id= "success">
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>">
+      <%= value %>
+    </div>
+  <% end %>
+</div>
