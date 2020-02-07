@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @current_user.id
       redirect_to home_path
     else
-      flash.now[:error] = 'Invalid email/password combination'
-      render action: 'new'
+      flash[:alert] = 'Invalid email/password combination.'
+      redirect_to login_path
     end
   end
 
