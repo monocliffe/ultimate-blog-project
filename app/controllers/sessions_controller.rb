@@ -16,5 +16,9 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    session[:user_id] = @current_user = nil
+    flash[:success] = 'Logout Successful!'
+    redirect_to home_url
+  end
 end
