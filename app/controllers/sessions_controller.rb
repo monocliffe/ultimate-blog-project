@@ -12,10 +12,17 @@ class SessionsController < ApplicationController
         redirect_to home_path
       end
     else
-      render action: 'new'
+      flash[:alert] = 'Invalid email/password combination.'
+      redirect_to login_path
     end
   end
 
+  def destroy; end
+
+  def show
+    create
+  end
+  
   def destroy
     session[:user_id] = @current_user = nil
     flash[:success] = 'Logout Successful!'
