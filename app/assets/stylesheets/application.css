@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  */
-#login {  float: right;  color: #999;}
 
 .flash {padding:0.8em; margin-bottom:1em; border: 2px solid #ddd;}
 .success {background-color: lightgreen; color: black; border-color: green}
 .alert {background-color: lightcoral; color: white; border-color: darkred}
+
+#login_logout {  float: right;  color: #999;}
