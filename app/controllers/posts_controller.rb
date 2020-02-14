@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :ensure_login, except: [:index]
 
   def index
-    @posts = Post.all
+    @posts = Post.order(:created_at)
   end
 
   def new
