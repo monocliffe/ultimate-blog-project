@@ -4,6 +4,10 @@
   <% @posts.each do |post| %>
     <p>
       <h2><%= post.title %></h2>
+      <div>
+        Created at: <%= post.created_at.strftime('%d/%m/%Y %H:%M') %>  |
+        Submitted by: <%= post.user.forename %> <%= post.user.surname %>
+      </div>
       <br>
       <%= strip_tags(post.body.to_s.truncate(300)) %>
       <hr>
