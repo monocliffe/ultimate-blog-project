@@ -5,7 +5,7 @@
     <p>
       <h2><%= post.title %></h2>
       <br>
-      <%= post.body %>
+      <%= strip_tags(post.body.to_s.truncate(300)) %>
       <hr>
     </p>
   <% end %>
