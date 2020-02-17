@@ -10,6 +10,8 @@
       </div>
       <br>
       <%= strip_tags(post.body.to_s.truncate(300)) %>
+      <br>
+      <%= link_to 'View', post %>
       <hr>
     </p>
   <% end %>
