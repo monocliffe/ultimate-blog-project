@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: [:show, :edit, :update] # :destroy
+  before_action :load_post, only: [:show, :edit, :update, :destroy]
   before_action :ensure_login, except: [:index, :show]
 
   def index
@@ -31,6 +31,8 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+
+  def delete; end
 
   def post_summary(post)
     ActionController::Base.helpers.strip_tags(post.body.to_s.truncate(300))
