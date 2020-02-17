@@ -1,2 +1,19 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>Posts</h1>
+<hr>
+  <div>
+  <% @posts.each do |post| %>
+    <p>
+      <h2><%= post.title %></h2>
+      <div>
+        Created at: <%= post.created_at.strftime('%d/%m/%Y %H:%M') %>  |
+        Submitted by: <%= post.user.forename %> <%= post.user.surname %>
+      </div>
+      <br>
+      <%= post_summary(post) %>
+      <br><br>
+      <%= link_to 'View', post %>
+      <hr>
+    </p>
+  <% end %>
+  </div>
+<br>

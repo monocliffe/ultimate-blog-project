@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :ensure_login, except: [:index]
 
   def index
-    @posts = Post.all
+    @posts = Post.order(:created_at)
   end
 
   def new
@@ -21,6 +21,11 @@ class PostsController < ApplicationController
   end
 
   def show; end
+
+  def post_summary(post)
+    ActionController::Base.helpers.strip_tags(post.body.to_s.truncate(300))
+  end
+  helper_method :post_summary
 
   private
 
