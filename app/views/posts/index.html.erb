@@ -12,6 +12,9 @@
       <%= post_summary(post) %>
       <br><br>
       <%= link_to 'View', post %>
+      <% if @current_user %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+      <% end %>
       <hr>
     </p>
   <% end %>
