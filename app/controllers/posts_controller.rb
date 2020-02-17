@@ -22,6 +22,11 @@ class PostsController < ApplicationController
 
   def show; end
 
+  def post_summary(post)
+    ActionController::Base.helpers.strip_tags(post.body.to_s.truncate(300))
+  end
+  helper_method :post_summary
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.

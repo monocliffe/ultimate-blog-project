@@ -9,7 +9,7 @@
         Submitted by: <%= post.user.forename %> <%= post.user.surname %>
       </div>
       <br>
-      <%= strip_tags(post.body.to_s.truncate(300)) %>
+      <%= post_summary(post) %>
       <hr>
     </p>
   <% end %>
