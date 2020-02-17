@@ -1,0 +1,13 @@
+<h2>
+  <%= @post.title %>
+</h2>
+
+<div>
+  <%= @post.body %>
+</div>
+
+<div>
+  Created at: <%= @post.created_at.strftime('%F %T') %>  |
+  Updated at: <%= @post.updated_at.strftime('%F %T') %>  |
+  Submitted by: <%= @post.user.forename %> <%= @post.user.surname %>
+</div>
