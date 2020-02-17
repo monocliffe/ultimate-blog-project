@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: [:show, :edit]# :destroy, :update]
+  before_action :load_post, only: [:show, :edit, :update] # :destroy
   before_action :ensure_login, except: [:index, :show]
 
   def index
@@ -25,8 +25,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    @post = Post.update(post_params)
-    if @post.save
+    if @post.update(post_params)
       redirect_to post_path(@post), notice: 'Post updated successfully!'
     else
       render :edit
