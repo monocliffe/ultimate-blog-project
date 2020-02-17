@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: [:show]#, :edit, :destroy, :update]
-  before_action :ensure_login, except: [:index]
+  before_action :load_post, only: [:show, :edit, :update] # :destroy
+  before_action :ensure_login, except: [:index, :show]
 
   def index
     @posts = Post.order(:created_at)
@@ -14,13 +14,23 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = @current_user
     if @post.save
-      redirect_to post_path(@post), alert: 'Post created successfully!'
+      redirect_to post_path(@post), notice: 'Post created successfully!'
     else
       render :new
     end
   end
 
   def show; end
+
+  def edit; end
+
+  def update
+    if @post.update(post_params)
+      redirect_to posts_url, notice: 'Post updated successfully!'
+    else
+      render :edit
+    end
+  end
 
   def post_summary(post)
     ActionController::Base.helpers.strip_tags(post.body.to_s.truncate(300))
