@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: [:show, :edit, :update, :destroy]
+  before_action :load_post, only: [:show, :edit, :update, :destroy, :restore]
   before_action :ensure_login, except: [:index, :show]
 
   def index
@@ -34,11 +34,18 @@ class PostsController < ApplicationController
     end
   end
 
-  def soft_delete
+  def destroy
     @post.discard
-    flash[:alert] = 'Post Removed.'
+    flash[:alert] = "Post Removed. #{view_context.link_to('Undo', restore_post_path(@post))}".html_safe
     redirect_to posts_url
   end
+
+  def restore
+    @post.undiscard
+    flash[:success] = 'Post recovered successfully!'
+    redirect_to posts_url
+  end
+  helper_method :restore
 
   def post_summary(post)
     ActionController::Base.helpers.strip_tags(post.body.to_s.truncate(300))
