@@ -14,6 +14,11 @@ Project is created with:
 * Ruby 2.6.3p62
 * Rails 6.0.2.1
 
+To display Images in the blog posts please Install ImageMagick and/or libvips:
+```
+$ brew install imagemagick vips
+```
+
 ## Setup
 
 To run this project:
