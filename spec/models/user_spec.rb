@@ -30,10 +30,10 @@ RSpec.describe User, type: :model do
     end
 
     it 'email is unique' do
-      user1 = User.new(forename: 'first',
-                       surname: 'second',
-                       email: 'test@email.com',
-                       password: 'password').save
+      User.new(forename: 'first',
+               surname: 'second',
+               email: 'test@email.com',
+               password: 'password').save
       user2 = User.new(forename: 'first',
                        surname: 'second',
                        email: 'test@email.com',
