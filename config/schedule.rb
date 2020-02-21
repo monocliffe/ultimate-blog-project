@@ -1,5 +1,6 @@
+set :environment, 'development'
 set :output, 'log/whenever.log'
 
-every 1.minutes do
-  rake 'cd :path && rake post_hard_delete'
+every 1.minute do
+  rake 'post:hard_delete', environment: 'development'
 end

@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   def restore
     @post.undiscard
     flash[:success] = 'Post recovered successfully!'
-    redirect_to posts_url
+    redirect_to post_path(@post)
   end
   helper_method :restore
 
