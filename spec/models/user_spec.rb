@@ -45,5 +45,14 @@ RSpec.describe User, type: :model do
       user.email = 'test'
       expect(user).to_not be_valid
     end
+
+    it 'has many posts' do
+      post1 = Post.new(title: 'Test1',
+                       body: 'Test Body')
+      post2 = Post.new(title: 'Test2',
+                       body: 'Test Body')
+      user.posts = [post1, post2]
+      expect(user.posts).to_not be_nil
+    end
   end
 end
