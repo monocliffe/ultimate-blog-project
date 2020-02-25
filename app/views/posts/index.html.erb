@@ -1,5 +1,15 @@
 <h1>Posts</h1>
+
+<div id= "flash">
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>">
+      <%= value.html_safe %>
+    </div>
+  <% end %>
+</div>
+
 <hr>
+
   <div>
   <% @posts.each do |post| %>
     <p>
@@ -14,9 +24,14 @@
       <%= link_to 'View', post %>
       <% if @current_user %>
         <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
       <hr>
     </p>
   <% end %>
   </div>
+
+<% if @current_user %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>
 <br>
