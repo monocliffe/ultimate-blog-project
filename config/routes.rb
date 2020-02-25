@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users
+  resources :posts do
+    member do
+      get 'restore'
+    end
+  end
   resource :session
 
   get 'signup', to: 'users#new', as: 'signup'
