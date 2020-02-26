@@ -1,3 +1,4 @@
+# Posts Controller
 class PostsController < ApplicationController
   before_action :load_post, only: [:show, :edit, :update, :destroy, :restore]
   before_action :ensure_login, except: [:index, :show]
