@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  context 'factories' do
+    let(:user) { FactoryBot.create(:user) }
+
+    it 'has valid factory' do
+      expect(user).to be_valid
+    end
+  end
+
   context 'validation' do
     let(:user) do
       User.new(forename: 'first',
