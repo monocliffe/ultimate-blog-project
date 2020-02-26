@@ -1,3 +1,4 @@
+# Sessions Controller
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :ensure_login, only: [:index, :show, :edit, :update, :destroy]

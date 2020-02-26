@@ -7,4 +7,5 @@ AllCops:
     - 'tmp/**/*'
     - '.git/**/*'
     - 'node_modules/**/*'
+    - 'db/migrate/*'
   TargetRubyVersion: 2.3

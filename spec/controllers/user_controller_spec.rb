@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   context 'create account' do
-
     it 'saves successfully' do
       expect { user_create }.to change(User, :count).by(1)
     end
