@@ -63,9 +63,8 @@ class PostsController < ApplicationController
   def load_post
     @post = Post.find_by(id: params[:id])
 
-    unless @post
-      flash[:alert] = 'Post Not found!'
-      redirect_to posts_path
-    end
+    flash[:alert] = 'Post Not found!' if @post.nil?
+
+    redirect_to posts_path
   end
 end

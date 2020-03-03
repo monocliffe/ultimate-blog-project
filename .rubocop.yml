@@ -2,10 +2,13 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   Exclude:
+    - 'Rakefile'
     - 'vendor/**/*'
     - 'spec/fixtures/**/*'
     - 'tmp/**/*'
     - '.git/**/*'
     - 'node_modules/**/*'
-    - 'db/migrate/*'
+    - 'db/**/*'
+    - 'test/**/*.rb'
+    - 'spec/**/*.rb'
   TargetRubyVersion: 2.3
