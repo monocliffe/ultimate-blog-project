@@ -5,7 +5,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'spec_helper'
@@ -71,14 +71,14 @@ RSpec.configure do |config|
   end
 
   # This block configures Caypbara's driver to use Selenium
-  # It makes it use the chrome browser, but can also be 
+  # It makes it use the chrome browser, but can also be
   # configured to user Firefox, etc.
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
-  Capybara.configure do |config|
-    config.default_max_wait_time = 10 #seconds
-    config.default_driver = :selenium
+  Capybara.configure do |conf|
+    conf.default_max_wait_time = 10 # seconds
+    conf.default_driver = :selenium
   end
 end
