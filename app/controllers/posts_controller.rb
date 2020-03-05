@@ -65,6 +65,6 @@ class PostsController < ApplicationController
 
     flash[:alert] = 'Post Not found!' if @post.nil?
 
-    redirect_to posts_path
+    redirect_to posts_path if @post.nil?
   end
 end
