@@ -75,4 +75,27 @@ RSpec.describe PostsController, type: :controller do
       expect(flash[:success]).to match(/Post updated successfully!/)
     end
   end
+
+  context 'create' do
+    it 'save user successfully' do
+      expect{
+        get :create, params: { :post => { :title => 'test', :body => 'new body' } }
+      }.to change{ Post.count }.by(1)
+    end
+
+    it 'redirects to post if successful' do
+      get :create, params: { :post => { :title => 'test', :body => 'new body' } }
+      expect(response).to redirect_to(post_path(2))
+    end
+
+    it 'redirects to new if unsuccessful' do
+      get :create, params: { :post => { :title => '', :body => 'new body' } }
+      expect(response).to render_template :new
+    end
+
+    it 'shows success flash banner if successful' do
+      get :create, params: { :post => { :title => 'test', :body => 'new body' } }
+      expect(flash[:success]).to match(/Post created successfully!/)
+    end
+  end
 end
