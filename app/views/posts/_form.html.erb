@@ -14,12 +14,12 @@
 
     <div class="field">
       <%= form.label :title %>
-      <%= form.text_field :title, class: 'form-control', size: 40 %>
+      <%= form.text_field :title, id: :title, class: 'form-control', size: 40 %>
     </div>
 
     <div class="field">
       <%= form.label :body %>
-      <%= form.rich_text_area :body %>
+      <%= form.rich_text_area :body, id: :body %>
     </div>
 
     <div class="actions">
