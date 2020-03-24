@@ -1,11 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  context 'validation' do
-    it 'has valid factory' do
-      expect(FactoryBot.build(:post).save).to eq(true)
-    end
-
+  context 'post validation' do
     it 'is invalid without title' do
       expect(FactoryBot.build(:post, title: nil).save).to be(false)
     end
