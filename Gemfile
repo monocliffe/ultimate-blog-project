@@ -36,7 +36,7 @@ gem 'whenever', require: false
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'rspec-rails'
+gem 'rspec-rails', '~> 4.0.0.beta3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution
@@ -62,6 +62,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rails-controller-testing'
 
   gem 'faker'
   gem 'factory_bot_rails'
