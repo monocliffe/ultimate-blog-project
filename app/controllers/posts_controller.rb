@@ -1,9 +1,15 @@
+# Posts Controller
 class PostsController < ApplicationController
   before_action :load_post, only: [:show, :edit, :update, :destroy, :restore]
   before_action :ensure_login, except: [:index, :show]
 
   def index
     @posts = Post.kept.order(:created_at)
+
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @posts, each_serializer: PostSerializer }
+    end
   end
 
   def new
@@ -13,31 +19,46 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = @current_user
-    if @post.save
-      flash[:success] = 'Post created successfully!'
-      redirect_to post_path(@post)
-    else
-      render :new
+
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to post_url(@post), flash: { success: 'Post created successfully!'} }
+        format.json { render :show, status: :created, location: post_url(@post) }
+      else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html { render :show}
+      format.json { render json: @post, each_serializer: PostSerializer }
+    end
+  end
 
   def edit; end
 
   def update
-    if @post.update(post_params)
-      flash[:success] = 'Post updated successfully!'
-      redirect_to posts_url
-    else
-      render :edit
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to posts_url, flash: { success: 'Post updated successfully!' } }
+        format.json { render :show, status: :ok, location: posts_url }
+      else
+        format.html { render :edit }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @post.discard
-    flash[:alert] = "Post Removed. #{view_context.link_to('Undo', restore_post_path(@post))}".html_safe
-    redirect_to posts_url
+
+    respond_to do |format|
+      format.html { redirect_to posts_url, flash: { alert: "Post Removed. #{view_context.link_to('Undo', restore_post_path(@post))}".html_safe} }
+      format.json { head :no_content }
+    end
   end
 
   def restore
@@ -62,9 +83,8 @@ class PostsController < ApplicationController
   def load_post
     @post = Post.find_by(id: params[:id])
 
-    unless @post
-      flash[:alert] = 'Post Not found!'
-      redirect_to posts_path
-    end
+    flash[:alert] = 'Post Not found!' if @post.nil?
+
+    redirect_to posts_path if @post.nil?
   end
 end
